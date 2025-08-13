@@ -1,0 +1,53 @@
+﻿@model List<RapidApiConsume.Models.ApiBookingViewModel.Result>
+
+
+<h2>Hotel Bookings</h2>
+
+<form asp-action="Search" method="post">
+    <div>
+        <label for="dest_id">Destination ID:</label>
+        <input type="number" name="dest_id" required />
+    </div>
+    <div>
+        <label for="checkinDate">Check-in Date:</label>
+        <input type="date" name="checkinDate" required />
+    </div>
+    <div>
+        <label for="checkoutDate">Check-out Date:</label>
+        <input type="date" name="checkoutDate" required />
+    </div>
+    <div>
+        <label for="adults_number">Number of Adults:</label>
+        <input type="number" name="adults_number" value="2" required />
+    </div>
+    <div>
+        <label for="children_number">Number of Children:</label>
+        <input type="number" name="children_number" value="0" required />
+    </div>
+    <div>
+        <label for="room_number">Number of Rooms:</label>
+        <input type="number" name="room_number" value="1" required />
+    </div>
+    <div>
+        <label for="filter_by_currency">Currency:</label>
+        <input type="text" name="filter_by_currency" value="EUR" required />
+    </div>
+    <button type="submit">Search</button>
+</form>
+
+@if (Model != null && Model.Any())
+{
+    <h3>Results:</h3>
+    <ul>
+        @foreach (var item in Model)
+        {
+            <li>
+                <strong>@item.name</strong> - Score: @item.reviewScore - Price: @item.priceBreakdown?.grossPrice?.value @item.currency
+            </li>
+        }
+    </ul>
+}
+else
+{
+    <p>No results found.</p>
+}

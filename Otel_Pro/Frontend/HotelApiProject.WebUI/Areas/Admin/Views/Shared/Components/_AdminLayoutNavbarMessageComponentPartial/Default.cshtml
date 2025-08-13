@@ -1,0 +1,47 @@
+﻿@model List<ContactListDto>
+<li class="icons dropdown">
+    <a href="javascript:void(0)" data-toggle="dropdown">
+        <i class="mdi mdi-email-outline"></i>
+        <span class="badge gradient-1 badge-pill badge-primary">@Model.Count</span>
+    </a>
+    <div class="drop-down animated fadeIn dropdown-menu">
+        <div class="dropdown-content-heading d-flex justify-content-between">
+            <span class="">@Model.Count Yeni Mesaj</span>
+
+        </div>
+        <div class="dropdown-content-body">
+            <ul>
+                @foreach (var item in Model)
+                {
+                    <li class="notification-unread">
+                        <a href="/Admin/Contact/InboxReadMessage/@item.ContactId">
+                            <div class="notification-content">
+                                <div class="notification-heading">@item.Name @item.Surname</div>
+                                <div class="notification-timestamp">@item.SendingDate.ToString("dd.MMM.yyy HH:ss")</div>
+                                <div class="notification-text">
+
+                                    @{
+                                        if (item.Text?.Length>50)
+                                        {
+                                            @item.Text.Substring(0,50)
+                                            ;
+                                        }
+                                        else
+                                        {
+                                            item.Text?.ToString();
+                                        }
+                                    }...
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <hr />
+                }
+            </ul>
+            <div style="text-align:center;align-content:center;align-items:center">
+                <a href="/Admin/Contact/Index">Tüm Mesajları Göster</a>
+
+            </div>
+        </div>
+    </div>
+</li>

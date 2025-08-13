@@ -1,0 +1,66 @@
+﻿@model List<WorkLocationListDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    int count = 0;
+}
+
+<div class="row page-titles mx-0">
+    <div class="col p-md-0">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/Admin/Dashboard/Index">Anasayfa</a></li>
+            <li class="breadcrumb-item active"><a href="javascript:void(0)">Şubeler</a></li>
+        </ol>
+    </div>
+</div>
+<!-- row -->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-lg-8">
+                            <h4 class="card-title">
+                                Şube Listesi
+                            </h4>
+                        </div>
+                        <div class="col-lg-2">
+                            <a href="/Admin/WorkLocation/AddWorkLocation" class="btn mb-1 btn-primary">
+                                Yeni Şube  <span class="btn-icon-right"><i class="fas fa-hotel"> +</i></span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped verticle-middle">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Şube Adı</th>
+                                    <th scope="col">Şehir</th>
+                                    <th scope="col">Aksiyon</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    count++;
+                                    <tr>
+                                        <th>@count</th>
+                                        <td>@item.WorkLocationName</td>
+                                        <td>@item.WorkLocationCity</td>
+                                        <td>
+                                            <span><a href="/Admin/WorkLocation/UpdateWorkLocation/@item.WorkLocationId" data-toggle="tooltip" data-placement="top" title="Güncelle"><i class="fa fa-pencil color-muted m-r-5"></i> </a><a href="/Admin/WorkLocation/DeleteWorkLocation/@item.WorkLocationId" data-toggle="tooltip" data-placement="top" title="Sil"><i class="fa fa-close color-danger"></i></a></span>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

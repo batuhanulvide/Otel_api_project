@@ -1,0 +1,103 @@
+﻿@model List<TestimonialViewModel>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    int count = 0;
+}
+
+
+<div class="row page-titles mx-0">
+    <div class="col p-md-0">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/Dashboard/Index">Anasayfa</a></li>
+            <li class="breadcrumb-item active"><a href="javascript:void(0)">Referanslar</a></li>
+        </ol>
+    </div>
+</div>
+<!-- row -->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-lg-10">
+                            <h4 class="card-title">
+                                Referans Listesi
+                            </h4>
+                        </div>
+                        <div class="col-lg-2">
+                            <a href="/Testimonial/AddTestimonial" class="btn mb-1 btn-primary">
+                                Yeni Referans Ekle <span class="btn-icon-right"><i class="fas fa-comment-medical"></i></span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped verticle-middle">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Profil</th>
+                                    <th scope="col">Adı</th>
+                                    <th scope="col">Soyadı</th>
+                                    <th scope="col">Ünvan</th>
+                                    <th scope="col">Açıklama</th>
+                                    <th scope="col">Durum</th>
+                                    <th scope="col">Aksiyon</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    count++;
+                                    <tr>
+                                        <th>@count</th>
+                                        <td><img src="@item.ImageUrl" height="50px" width="40px" /></td>
+                                        <td>@item.Name</td>
+                                        <td>@item.Surname</td>
+                                        <td>
+                                            @item.Title
+                                        </td>
+                                        <td>
+                                            @{
+                                                if (item.Description?.Length > 70)
+                                                {
+                                                    @item.Description.Substring(0, 70)
+                                                    ;
+                                                }
+                                                else
+                                                {
+                                                    @item.Description?.ToString()
+                                                    ;
+                                                }
+                                            }
+                                        </td>
+                                        <td>
+                                            @{
+                                                if (item.IsApproved == true)
+                                                {
+                                                    <span class="label gradient-1 rounded">Aktif</span>
+                                                }
+                                                else
+                                                {
+                                                    <span class="label gradient-2 rounded">Pasif</span>
+                                                }
+                                            }
+                                        </td>
+                                        <td>
+                                            <span>
+                                                <a href="/Testimonial/UpdateTestimonial/@item.TestimonialId" data-toggle="tooltip" data-placement="top" title="Güncelle"><i class="fa fa-pencil color-muted m-r-5"></i> </a>
+                                                <a href="/Testimonial/DeleteTestimonial/@item.TestimonialId" data-toggle="tooltip" data-placement="top" title="Sil"><i class="fa fa-close color-danger"></i></a>
+                                            </span>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,62 @@
+﻿@model GuestUpdateDto
+@{
+    ViewData["Title"] = "UpdateGuest";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row page-titles mx-0">
+    <div class="col p-md-0">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/Admin/Guest/Index">Misafirler</a></li>
+            <li class="breadcrumb-item active"><a href="javascript:void(0)">Misafir Güncelleme</a></li>
+        </ol>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Misafir Bilgileri</h4>
+                    <div class="basic-form">
+                        <form method="post">
+                            <div class="form-row">
+                                <input type="hidden" asp-for="GuestId" />
+                                <div class="form-group col">
+                                    <label>TC</label>
+                                    <input type="text" class="form-control" asp-for="TC" />
+                                    <span class="text-danger" asp-validation-for=TC></span>
+                                </div>
+                                <div class="form-group col">
+                                    <label>Ad</label>
+                                    <input type="text" class="form-control" asp-for="Name" />
+                                    <span class="text-danger" asp-validation-for=Name></span>
+                                </div>
+                                <div class="form-group col">
+                                    <label>Soyad</label>
+                                    <input type="text" class="form-control" asp-for="Surname" />
+                                    <span class="text-danger" asp-validation-for=Surname></span>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col">
+                                    <label>Şehir</label>
+                                    <input type="text" class="form-control" asp-for="City" />
+                                    <span class="text-danger" asp-validation-for=City></span>
+                                </div>
+                                <div class="form-group col">
+                                    <label>Doğum Tarihi</label>
+                                    <input type="date" class="form-control" asp-for="Birthday" />
+                                    <span class="text-danger" asp-validation-for=Birthday></span>
+                                </div>
+                            </div>
+                            <button class="btn mb-1 btn-success">
+                                Kaydet <span class="btn-icon-right"><i class="fa fa-check"></i></span>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

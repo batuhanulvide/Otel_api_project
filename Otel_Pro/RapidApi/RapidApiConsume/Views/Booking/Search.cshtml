@@ -1,0 +1,22 @@
+﻿@model List<RapidApiConsume.Models.ApiBookingViewModel.Result>
+
+
+<h2>Search Results</h2>
+
+@if (Model != null && Model.Any())
+{
+    <ul>
+        @foreach (var item in Model)
+        {
+            <li>
+                <strong>@item.name</strong> - Score: @item.reviewScore - Price: @item.priceBreakdown?.grossPrice?.value @item.currency
+            </li>
+        }
+    </ul>
+}
+else
+{
+    <p>No results found.</p>
+}
+
+<a asp-action="Index">Back to Search</a>

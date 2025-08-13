@@ -1,0 +1,26 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_UILayout.cshtml";
+}
+@await Component.InvokeAsync("_UILayoutSliderComponentPartial")
+@* @await Component.InvokeAsync("_UILayoutBookingComponentPartial") *@
+<!-- About Start -->
+@await Component.InvokeAsync("_DefaultAboutUsComponentPartial")
+<!-- About End -->
+<!-- Room Start -->
+@await Component.InvokeAsync("_DefaultOurRoomComponentPartial")
+<!-- Room End -->
+<!-- Video Start -->
+@await Component.InvokeAsync("_DefaultVideoComponentPartial")
+<!-- Video Start -->
+<!-- Service Start -->
+@await Component.InvokeAsync("_DefaultServiceComponentPartial")
+<!-- Service End -->
+<!-- Testimonial Start -->
+@await Component.InvokeAsync("_DefaultTestimonialComponentPartial")
+<!-- Testimonial End -->
+<!-- Team Start -->
+@await Component.InvokeAsync("_DefaultTeamComponentPartial")
+<!-- Team End -->
+

@@ -1,0 +1,84 @@
+﻿@model List<ApiBookingViewModel.Result>
+@{
+    ViewData["Title"] = "Index";
+    int count = 0;
+}
+
+<link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+<div class="container">
+    <form method="post" asp-action="Index"asp-controller="Booking">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="col">
+                    <label class="form-label">Şehir Adı</label>
+                    <input type="text" class="form-control" name="cityName" />
+                </div>
+                <div class="col">
+                    <label class="form-label">CheckIn Tarihi</label>
+                    <input type="date" class="form-control" name="checkinDate" />
+                </div>
+                <div class="col">
+                    <label class="form-label">CheckOut Tarihi</label>
+                    <input type="date" class="form-control" name="checkoutDate" />
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="col">
+                    <label class="form-label">Yetişkin Sayısı</label>
+                    <input type="number" class="form-control" name="adults_number" />
+                </div>          
+                <div class="col">
+                    <label class="form-label">Oda Sayısı</label>
+                    <input type="number" class="form-control" name="room_number" />
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="col">
+                    <label class="form-label">Çocuk Sayısı <span style="font-size:12px"> (Çocuğunuz yoksa boş bırakın)</span></label>
+                    <input type="number" class="form-control" name="children_number" />
+                </div>
+                <div class="col">
+                    <label class="form-label">Çocukların Yaşı<span style="font-size:12px"> (Her bir çocuk için yaş belirtip virgülle ayırın. Örn: 2,5)</span></label>
+                    <input type="text" class="form-control" name="children_ages" />
+                </div>
+                <br />
+                <button class="btn btn-info">Parametrelere Göre API Üzerinden Otel Listele</button>
+            </div>
+        </div>
+    </form>
+    <br />
+
+    <div class="row">
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Görsel</th>
+                    <th>Otel Adı</th>
+                    <th>Bulunduğu Şehir</th>
+                    <th>Puan</th>
+                    <th>Verilen Oy Sayısı</th>
+                    <th>Puan Yorumu</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    count++;
+                    <tr>
+                        <td>@count</td>
+                        <td><img height="70" width="60" src="@item.photoMainUrl" /></td>
+                        <td>@item.name</td>
+                        <td>@item.wishlistName</td>
+                        <td>@item.reviewScore</td>
+                        <td>@item.reviewCount</td>
+                        <td>@item.reviewScoreWord</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+

@@ -1,0 +1,26 @@
+﻿@model List<ApiExchangeViewModel.Exchange_Rates>
+@{
+    ViewData["Title"] = "Index";
+}
+<link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+<div class="container">
+    <table class="table table-bordered table-hover">
+        <h4>1 ₺ Güncel Döviz Karşılıkları</h4>
+        <thead>
+            <tr>
+                <th>Döviz Kodu</th>
+                <th>Güncel Fiyat</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.currency</td>               
+                    <td>@item.exchange_rate_buy</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+

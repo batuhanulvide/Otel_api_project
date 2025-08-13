@@ -1,0 +1,42 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+/* Ýlk simge görünür ve geçiþ uygulanýr */
+a .default-icon {
+    display: inline;
+    opacity: 1;
+    transition: opacity 0.3s ease-in-out; /* Opacity geçiþi */
+}
+
+/* Hover durumunda, diðer simgeyi göster ve ilk simgeyi gizle */
+a:hover .default-icon {
+    opacity: 0; /* Ýlk simgeyi yavaþça gizle */
+}
+
+/* Hover simgesini baþlangýçta gizle ve geçiþi uygula */
+a .hover-icon {
+    display: inline;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out; /* Opacity geçiþi */
+}
+
+/* Hover durumunda ikinci simgeyi görünür hale getir */
+a:hover .hover-icon {
+    opacity: 1; /* Ýkinci simgeyi yavaþça görünür hale getir */
+}

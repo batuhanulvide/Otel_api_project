@@ -1,0 +1,23 @@
+﻿@model List<CommentListDto>
+<div class="mb-4">
+    <h4 class="mb-4">@Model.Count Yorum</h4>
+    @foreach (var item in Model)
+    {
+        <div class="d-flex mb-4">
+            <img src="@item.User.ImageUrl" class="img-fluid rounded" style="width: 45px; height: 45px;">
+            <div class="ps-3">
+                <h6>@item.User.Name @item.User.Surname <small class="text-body fw-normal fst-italic">@item.CommentDate.ToString("dd MMM yyy")</small></h6>
+                <div class="mb-2">
+                    <small class="fa fa-star text-primary"></small>
+                    <small class="fa fa-star text-primary"></small>
+                    <small class="fa fa-star text-primary"></small>
+                    <small class="fa fa-star text-primary"></small>
+                    <small class="fa fa-star text-primary"></small>
+                </div>
+                <p class="mb-2">
+                 @item.Text
+                </p>
+            </div>
+        </div>        
+    }   
+</div>

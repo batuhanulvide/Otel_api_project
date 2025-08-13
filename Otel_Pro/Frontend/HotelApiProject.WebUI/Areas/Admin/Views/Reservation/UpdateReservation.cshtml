@@ -1,0 +1,102 @@
+﻿@model ReservationUpdateDto
+@{
+    ViewData["Title"] = "UpdateReservation";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="row page-titles mx-0">
+    <div class="col p-md-0">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/Admin/Reservation/Index">Rezervasyonlar</a></li>
+            <li class="breadcrumb-item active"><a href="javascript:void(0)">Rezervasyon Güncelle</a></li>
+        </ol>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Rezervasyon Bilgileri</h4>
+                    <div class="basic-form">
+                        <form enctype="multipart/form-data" method="post">
+                            <div class="form-row">
+                                <div class="form-group col">
+                                    <input type="hidden" asp-for="ReservationId" />
+                                    <label>Ad</label>
+                                    <input type="text" class="form-control" asp-for="Name" />
+                                    <span class="text-danger" asp-validation-for=Name></span>
+                                </div>
+                                <div class="form-group col">
+                                    <label>Soyad</label>
+                                    <input type="text" class="form-control" asp-for="Surname" />
+                                    <span class="text-danger" asp-validation-for=Surname></span>
+                                </div>
+                                <div class="form-group col">
+                                    <label>E-posta</label>
+                                    <input type="text" class="form-control" asp-for="Email" />
+                                    <span class="text-danger" asp-validation-for=Email></span>
+                                </div>
+                                <div class="form-group col">
+                                    <label>Telefon</label>
+                                    <input type="text" class="form-control" asp-for="Phone" />
+                                    <span class="text-danger" asp-validation-for=Phone></span>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col">
+                                    <label>Yetişkin Sayısı</label>
+                                    <input type="number" class="form-control" asp-for="AdultCount" />
+                                    <span class="text-danger" asp-validation-for=AdultCount></span>
+                                </div>
+                                <div class="form-group col">
+                                    <label>Çocuk Sayısı</label>
+                                    <input type="number" class="form-control" asp-for="ChildCount" />
+                                    <span class="text-danger" asp-validation-for=ChildCount></span>
+                                </div>
+                                <div class="form-group col">
+                                    <label>Oda Sayısı</label>
+                                    <input type="number" class="form-control" asp-for="RoomCount" />
+                                    <span class="text-danger" asp-validation-for=RoomCount></span>
+                                </div>
+                                <div class="form-group col">
+                                    <label>Rezervasyon Durum</label>
+                                    @Html.DropDownListFor(x => x.ReservationStatusId, (List<SelectListItem>)ViewBag.statusList, new { @class = "form-control" })
+                                    <span class="text-danger" asp-validation-for=ReservationStatusId></span>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col">
+                                    <label>CheckIn Tarihi</label>
+                                    <input type="date" class="form-control" asp-for="CheckIn" />
+                                    <span class="text-danger" asp-validation-for=CheckIn></span>
+                                </div>
+                                <div class="form-group col">
+                                    <label>CheckOut Tarihi</label>
+                                    <input type="date" class="form-control" asp-for="CheckOut" />
+                                    <span class="text-danger" asp-validation-for=CheckOut></span>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col">
+                                    <label>Misafir Talepleri</label>
+                                    <textarea style="height:120px" class="form-control" asp-for="Request"></textarea>
+                                    <span class="text-danger" asp-validation-for=Description></span>
+                                </div>
+                                <div class="form-group col">
+                                    <label>Açıklama</label>
+                                    <textarea style="height:120px" class="form-control" asp-for="Description"></textarea>
+                                    <span class="text-danger" asp-validation-for=Description></span>
+                                </div>
+                            </div>
+                            <button class="btn mb-1 btn-success">
+                                Güncelle <span class="btn-icon-right"><i class="fa fa-check"></i></span>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

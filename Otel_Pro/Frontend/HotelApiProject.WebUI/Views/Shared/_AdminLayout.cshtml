@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+@await Component.InvokeAsync("_AdminLayoutHeadComponentPartial")
+<body>
+    <!--*******************
+        Preloader start
+    ********************-->
+    @await Component.InvokeAsync("_AdminLayoutPreLoaderComponentPartial")
+    <!--*******************
+        Preloader end
+    ********************-->
+    <!--**********************************
+        Main wrapper start
+    ***********************************-->
+    <div id="main-wrapper">
+        @await Component.InvokeAsync("_AdminLayoutNavbarComponentPartial")
+        <!--**********************************
+            Sidebar start
+        ***********************************-->   
+         @await Component.InvokeAsync("_AdminLayoutSideBarComponentPartial")
+        <!--**********************************
+            Sidebar end
+        ***********************************-->
+        <!--**********************************
+            Content body start
+        ***********************************-->
+        <div class="content-body">
+            @RenderBody()
+            <!-- #/ container -->
+        </div>
+        <!--**********************************
+            Content body end
+        ***********************************-->
+        <!--**********************************
+            Footer start
+        ***********************************-->
+        @await Component.InvokeAsync("_AdminLayoutFooterComponentPartial")
+        <!--**********************************
+            Footer end
+        ***********************************-->
+    </div>
+    <!--**********************************
+        Main wrapper end
+    ***********************************-->
+    <!--**********************************
+        Scripts
+    ***********************************-->
+    @await Component.InvokeAsync("_AdminLayoutScriptsComponentPartial")
+</body>
+
+</html>

@@ -1,0 +1,68 @@
+﻿<div class="container-fluid bg-dark px-0">
+    <div class="row gx-0">
+        <div class="col-lg-3 bg-dark d-none d-lg-block">
+            <a href="/Default/Index" class="navbar-brand w-100 h-100 m-0 p-0 d-flex align-items-center justify-content-center">
+                <h1 class="m-0 text-primary text-uppercase">Hotelier</h1>
+            </a>
+        </div>
+        <div class="col-lg-9">
+            <div class="row gx-0 bg-white d-none d-lg-flex">
+                <div class="col-lg-7 px-5 text-start">
+                    <div class="h-100 d-inline-flex align-items-center py-2 me-4">
+                        <i class="fa fa-envelope text-primary me-2"></i>
+                        <a href="mailto:hotelapi@batuhanyalinsoftware.com.tr" class="mb-0">hotelapi@batuhanyalinsoftware.com.tr</a>
+                    </div>
+                    <div class="h-100 d-inline-flex align-items-center py-2">
+                        <i class="fa fa-phone-alt text-primary me-2"></i>
+                        <a href="tel:+903456789" class="mb-0">+90 345 67 89</a>
+                    </div>
+                </div>
+                @await Component.InvokeAsync("_UILayoutNavbarSocialMediaComponentPartial")
+            </div>
+            <nav class="navbar navbar-expand-lg bg-dark navbar-dark p-3 p-lg-0">
+                <a href="index.html" class="navbar-brand d-block d-lg-none">
+                    <h1 class="m-0 text-primary text-uppercase">Hotelier</h1>
+                </a>
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                    <div class="navbar-nav mr-auto py-0">
+                        <a href="/Default/Index" class="nav-item nav-link active"><i class="fas fa-home"></i></a>
+                        <a href="/Default/About" class="nav-item nav-link">Hakkımızda</a>
+                        <a href="/Default/Service" class="nav-item nav-link">Servisler</a>
+                        <a href="/Default/Room" class="nav-item nav-link">Odalar</a>
+                        <div class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Sayfalar</a>
+                            <div class="dropdown-menu rounded-0 m-0">
+                                <a href="/Default/Staff" class="dropdown-item">Ekibimiz</a>
+                                <a href="/Default/Testimonial" class="dropdown-item">Yorumlar</a>
+                            </div>
+                        </div>
+                        <a href="/Contact/Index" class="nav-item nav-link">İletişim</a>
+                        <a href="/Default/Help" class="nav-item nav-link">Yardım</a>
+                        <a href="/Reservation/Index" style="font-size:large" class="nav-item nav-link text-primary">Rezervasyon</a>
+                        @{
+                            if (User.Identity.Name == null)
+                            {
+                                <a style="font-size:large" class="nav-item nav-link" title="Oturum Aç" href="/Login/Index">
+                                    <i class="fas fa-sign-in-alt default-icon"></i>
+                                    <i class="fas fa-running hover-icon"></i>
+                                </a>
+                            }
+                            else
+                            {
+                                <a style="font-size:large" class="nav-item nav-link" title="Profilim" href="/Admin/Profile/Index">
+                                    <i class="fas fa-user-circle default-icon"></i>
+                                    <i class="fas fa-child hover-icon"></i>
+                                </a>
+                            }
+                        }
+
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+</div>
+<link href="~/css/site.css" rel="stylesheet" />

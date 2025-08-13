@@ -1,0 +1,15 @@
+﻿@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container-fluid mt-3">
+    @await Component.InvokeAsync("_DashboardStatisticCardComponentPartial")
+@*     @await Component.InvokeAsync("_DashboardProductSalesComponentPartial")
+    @await Component.InvokeAsync("_DashboardOrderSummaryComponentPartial") *@
+    @await Component.InvokeAsync("_DashboardTeamComponentPartial")
+    @await Component.InvokeAsync("_DashboardCustomersComponentPartial")
+@*     @await Component.InvokeAsync("_DashboardSalesActivitiesComponentPartial") *@
+    @await Component.InvokeAsync("_DashboardSocialMediaComponentPartial")
+</div>
+

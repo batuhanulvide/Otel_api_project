@@ -1,0 +1,81 @@
+﻿@model RoomAddDto
+@{
+    ViewData["Title"] = "AddRoom";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="row page-titles mx-0">
+    <div class="col p-md-0">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/Admin/Room/Index">Odalar</a></li>
+            <li class="breadcrumb-item active"><a href="javascript:void(0)">Yeni Oda Ekle</a></li>
+        </ol>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Oda Bilgileri</h4>
+                    <div class="basic-form">
+                        <form enctype="multipart/form-data" method="post">
+                            <div class="form-row">
+                                <div class="form-group col">
+                                    <label>Oda Numarası</label>
+                                    <input type="text" class="form-control" asp-for="RoomNumber" />
+                                    <span class="text-danger" asp-validation-for=RoomNumber></span>
+                                </div>
+                                <div class="form-group col">
+                                    <label>Başlık</label>
+                                    <input type="text" class="form-control" asp-for="Title" />
+                                    <span class="text-danger" asp-validation-for=Title></span>
+
+                                </div>
+                                <div class="form-group col">
+                                    <label>Fiyat</label>
+                                    <input type="text" class="form-control" asp-for="Price" />
+                                    <span class="text-danger" asp-validation-for=Price></span>
+                                </div>
+                                <div class="form-group col">
+                                    <label>Görsel</label>
+                                    <input type="file" class="form-control" name="Image" />
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col">
+                                    <label>Yatak Sayısı</label>
+                                    <input type="number" class="form-control" asp-for="BedCount" />
+                                    <span class="text-danger" asp-validation-for=BedCount></span>
+                                </div>
+                                <div class="form-group col">
+                                    <label>Banyo Sayısı</label>
+                                    <input type="number" class="form-control" asp-for="BathCount" />
+                                    <span class="text-danger" asp-validation-for=BathCount></span>
+                                </div>
+                                <div style="text-align:center;align-content:center;align-content:center;float:inherit" class="form-group col">
+                                    <input asp-for="Wifi" type="checkbox" class="form-check-input" />
+                                    <input type="hidden" asp-for="Wifi" value="false" />
+                                    <label>Wifi <i class="text-success fas fa-wifi"></i></label>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col">
+                                    <label>Açıklama</label>
+                                    <textarea style="height:120px" class="form-control" asp-for="Description"></textarea>
+                                    <span class="text-danger" asp-validation-for=Description></span>
+                                </div>
+                            </div>
+                            <button class="btn mb-1 btn-success">
+                                Kaydet <span class="btn-icon-right"><i class="fa fa-check"></i></span>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

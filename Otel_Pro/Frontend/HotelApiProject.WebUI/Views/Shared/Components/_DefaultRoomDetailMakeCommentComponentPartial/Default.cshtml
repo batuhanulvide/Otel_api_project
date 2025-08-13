@@ -1,0 +1,28 @@
+﻿@model CommentAddDto
+@{
+    if (User.Identity.Name == null)
+    {
+        <hr />
+        <h5>Yorum yapabilmek için öncelikli olarak giriş yapabilmeniz gerekmektedir.</h5>
+    }
+    else
+    {
+        <div class="bg-light p-4 p-md-5">
+            <h4 class="mb-4">Yorum Yap</h4>
+            <form method="post" asp-action="MakeComment" asp-controller="Default">
+                <input type="hidden" asp-for="RoomId" />
+                <input type="hidden" asp-for="UserId" />
+                <input type="hidden" asp-for="CommentDate" value="@DateTime.Now" />
+                <input type="hidden" asp-for="IsApproved" value="false" />
+                <div class="row g-3">
+                    <div class="col-12">
+                        <textarea asp-for=Text class="form-control bg-white border-0" rows="5" placeholder="Yorum"></textarea>
+                    </div>
+                    <div class="col-12">
+                        <button class="btn btn-primary w-100 py-3">Yorum Yap</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    }
+}

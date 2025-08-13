@@ -1,0 +1,55 @@
+﻿@model MailViewModel
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row page-titles mx-0">
+    <div class="col p-md-0">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/Admin/Dashboard/Index">Anasayfa</a></li>
+            <li class="breadcrumb-item active"><a href="javascript:void(0)">Mail Gönder</a></li>
+        </ol>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Mail Bilgileri</h4>
+                    <div class="basic-form">
+                        <form method="post">
+                         
+                            <input type="hidden" asp-for="SendingDate" value="@DateTime.Now" />
+                            <div class="form-row">
+                                <div class="form-group col">
+                                    <label>Alıcı E-posta</label>
+                                    <input type="email" class="form-control" asp-for="ReceiverMail" />
+                                    <span class="text-danger" asp-validation-for=ReceiverMail></span>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col">
+                                    <label>Konu</label>
+                                    <input type="text" class="form-control" asp-for="Subject" />
+                                    <span class="text-danger" asp-validation-for=Subject></span>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col">
+                                    <label>İçerik</label>
+                                    <textarea style="height:150px" class="form-control" asp-for=Body></textarea>
+                                    <span class="text-danger" asp-validation-for=Body></span>
+                                </div>
+                            </div>
+                            <button class="btn mb-1 btn-success">
+                                Gönder <span class="btn-icon-right"><i class="fas fa-paper-plane"></i></span>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

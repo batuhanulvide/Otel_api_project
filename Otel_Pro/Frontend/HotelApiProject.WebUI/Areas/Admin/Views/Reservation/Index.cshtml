@@ -1,0 +1,102 @@
+﻿@model List<ReservationListDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    int count = 0;
+}
+
+<div class="row page-titles mx-0">
+    <div class="col p-md-0">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/Dashboard/Index">Anasayfa</a></li>
+            <li class="breadcrumb-item active"><a href="javascript:void(0)">Rezervasyonlar</a></li>
+        </ol>
+    </div>
+</div>
+<!-- row -->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-lg-10">
+                            <h4 class="card-title">
+                                Rezervasyon Listesi
+                            </h4>
+                        </div>
+                        <div class="col-lg-2">
+                            <a href="/Admin/Reservation/AddReservation" class="btn mb-1 btn-primary">
+                                Yeni Rezervasyon  <span class="btn-icon-right"><i class="fas fa-vote-yea"></i></span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped verticle-middle">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Ad Soyad</th>
+                                    <th scope="col">E-posta</th>
+                                    <th scope="col">Telefon</th>
+                                    <th scope="col">Yetişkin</th>
+                                    <th scope="col">Çocuk</th>
+                                    <th scope="col">CheckIn</th>
+                                    <th scope="col">CheckOut</th>
+                                    <th scope="col">Rezervasyon Tarihi</th>
+                                    <th scope="col">Durum</th>
+                                    <th scope="col">Aksiyon</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    count++;
+                                    <tr>
+                                        <th>@count</th>
+                                        <td>@item.Name @item.Surname</td>
+                                        <td><a href="mailto:@item.Email">@item.Email</a></td>
+                                        <td><a href="tel:+90{@item.Phone}">@item.Phone</a></td>
+                                        <td>@item.AdultCount</td>
+                                        <td>@item.ChildCount</td>
+                                        <td>@item.CheckIn.ToString("dd.MM.yyy")</td>
+                                        <td>@item.CheckOut.ToString("dd.MM.yyy")</td>
+                                        <td>@item.ReservationDate.ToString("dd.MM.yyy")</td>
+                                        <td>
+                                            @{
+                                                if (item.ReservationStatusId == 1)
+                                                {
+                                                    <span class="label gradient-1 rounded">@item.ReservationStatus.StatusName</span>
+                                                }
+                                                else if (item.ReservationStatusId == 2)
+                                                {
+                                                    <span class="label gradient-2 rounded">@item.ReservationStatus.StatusName</span>
+                                                }
+                                                else if (item.ReservationStatusId == 3)
+                                                {
+                                                    <span class="label gradient-3 rounded">@item.ReservationStatus.StatusName</span>
+                                                }
+                                                else if (item.ReservationStatusId == 4)
+                                                {
+                                                    <span class="btn-dark label rounded">@item.ReservationStatus.StatusName</span>
+                                                }
+                                                else if (item.ReservationStatusId == 5)
+                                                {
+                                                    <span class="label gradient-7 rounded">@item.ReservationStatus.StatusName</span>
+                                                }
+                                            }
+                                        </td>                  
+                                        <td>
+                                            <span><a href="/Admin/Reservation/UpdateReservation/@item.ReservationId" data-toggle="tooltip" data-placement="top" title="Güncelle"><i class="fa fa-pencil color-muted m-r-5"></i> </a><a href="/Admin/Reservation/DeleteReservation/@item.ReservationId" data-toggle="tooltip" data-placement="top" title="Sil"><i class="fa fa-close color-danger"></i></a></span>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

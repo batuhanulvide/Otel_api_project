@@ -1,0 +1,97 @@
+﻿@model List<RoomListDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    int count = 0;
+}
+
+<div class="row page-titles mx-0">
+    <div class="col p-md-0">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/Admin/Dashboard/Index">Anasayfa</a></li>
+            <li class="breadcrumb-item active"><a href="javascript:void(0)">Odalar</a></li>
+        </ol>
+    </div>
+</div>
+<!-- row -->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-lg-10">
+                            <h4 class="card-title">
+                                Oda Listesi
+                            </h4>
+                        </div>
+                        <div class="col-lg-2">
+                            <a href="/Admin/Room/AddRoom" class="btn mb-1 btn-primary">
+                                Yeni Oda  <span class="btn-icon-right"><i class="fas fa-vote-yea"></i></span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped verticle-middle">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Oda Numarası</th>
+                                    <th scope="col">Görsel</th>
+                                    <th scope="col">Başlık</th>
+                                    <th scope="col">Fiyat</th>
+                                    <th scope="col">Yatak</th>
+                                    <th scope="col">Banyo</th>
+                                    <th scope="col">Wifi</th>
+                                    <th scope="col">Aksiyon</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    count++;
+                                    <tr>
+                                        <th>@count</th>
+                                        <td>@item.RoomNumber</td>
+                                        <td><img height="60px" width="70px" src="@item.CoverImageUrl" /></td>
+                                        <td>@item.Title</td>
+                                        <td>
+                                            <span style="font-size:medium" class="badge badge-success">
+                                                <i class="fas fa-dollar-sign"></i> <span class="badge badge-primary">@item.Price</span>
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <span style="font-size:medium" class="badge badge-secondary">
+                                                <i class="fas fa-bed"></i> <span class="badge badge-info">@item.BedCount</span>
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <span style="font-size:medium" class="badge badge-info">
+                                                <i class="fas fa-bath"></i> <span class="badge badge-light">@item.BathCount</span>
+                                            </span>
+                                        </td>
+                                        <td>
+                                            @{
+                                                if (@item.Wifi == true)
+                                                {
+                                                    <span style="font-size:large" class="text-success"><i class="fas fa-wifi"></i></span>
+                                                }
+                                                else
+                                                {
+                                                    <span style="font-size:large" class="text-danger"><i class="fas fa-wifi"></i></span>
+                                                }
+                                            }
+                                        </td>
+                                        <td>
+                                            <span><a href="/Admin/Room/UpdateRoom/@item.RoomId" data-toggle="tooltip" data-placement="top" title="Güncelle"><i class="fa fa-pencil color-muted m-r-5"></i> </a><a href="/Admin/Room/DeleteRoom/@item.RoomId" data-toggle="tooltip" data-placement="top" title="Sil"><i class="fa fa-close color-danger"></i></a></span>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

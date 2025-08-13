@@ -1,0 +1,21 @@
+﻿@model SubscribeAddDto
+<div class="container newsletter mt-5 wow fadeIn" data-wow-delay="0.1s">
+    <div class="row justify-content-center">
+        <div class="col-lg-10 border rounded p-1">
+            <div class="border rounded text-center p-1">
+                <div class="bg-white rounded text-center p-5">
+                    <form method="post" asp-action="_SubscribePartial" asp-controller="Default">
+                        <h4 class="mb-4">E-posta bültenimize <span class="text-primary text-uppercase">Kayıt Olun</span></h4>
+                        <div class="position-relative mx-auto" style="max-width: 400px;">
+                            <input class="form-control w-100 py-3 ps-4 pe-5" type="email" asp-for="Email" placeholder="E-posta adresinizi girin">
+                            <span class="text-danger" asp-validation-for="Email"></span>
+                            <br />
+                            <span style="color:dimgray;font-size:smaller">(Spam içerik gönderilmeyecektir)</span>
+                            <button type="submit" class="btn btn-primary py-2 px-3 position-absolute top-0 end-0 mt-2 me-2">Kayıt Ol</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

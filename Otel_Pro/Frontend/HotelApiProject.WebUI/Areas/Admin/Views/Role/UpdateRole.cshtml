@@ -1,0 +1,41 @@
+﻿@model RoleUpdateDto
+@{
+    ViewData["Title"] = "UpdateRole";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row page-titles mx-0">
+    <div class="col p-md-0">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/Admin/Role/Index">Roller</a></li>
+            <li class="breadcrumb-item active"><a href="javascript:void(0)">Rol Güncelleme</a></li>
+        </ol>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Rol Bilgileri</h4>
+                    <div class="basic-form">
+                        <form method="post">
+                            <div class="form-row">
+                                <input type="hidden" asp-for="Id" />
+                                <div class="form-group col">
+                                    <label>Başlık</label>
+                                    <input type="text" class="form-control" asp-for="Name" />
+                                    <span class="text-danger" asp-validation-for=Name></span>
+                                </div>
+                            </div>
+                            <button class="btn mb-1 btn-success">
+                                Güncelle <span class="btn-icon-right"><i class="fas fa-sync"></i></span>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,49 @@
+﻿@model List<ApiMovieViewModel>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+<div class="container">
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Görsel</th>
+                <th>Film Adı</th>
+                <th>Açıklama</th>
+                <th>Yıl</th>
+                <th>Puan</th>
+                <th>Imdb Link</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.rank</td>
+                    <td><img height="70" width="60" src="@item.image" /></td>
+                    <td>@item.title</td>
+                    <td>
+                        @{
+                            if (item.description?.Length > 50)
+                            {
+                                @item.description.Substring(0, 50)
+                                ;
+                            }
+                            else
+                            {
+                                @item.description?.ToString()
+                                ;
+                            }
+                        }
+                    </td>
+                    <td>@item.year</td>
+                    <td>@item.rating</td>
+                    <td><a style="" class="badge btn-warning" href="@item.imdb_link">Imdb Sayfası</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+

@@ -1,0 +1,71 @@
+﻿@model List<ReservationListDto>
+@{
+    int count = 0;
+}
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="active-member">
+                    <div class="table-responsive">
+                        <h4>Rezervasyon Listesi</h4>
+                        <table class="table table-xs mb-0">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Adı</th>
+                                    <th>Soyadı</th>
+                                    <th>Telefon</th>
+                                    <th>Rezervasyon Tarihi</th>
+                                    <th>CheckIn</th>
+                                    <th>CheckOut</th>
+                                    <th>Durum</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    count++;
+                                    <tr>
+                                        <td>@count</td>
+                                        <td>@item.Name</td>
+                                        <td>@item.Surname</td>
+                                        <td>@item.Phone</td>
+                                        <td>@item.ReservationDate.ToString("dd.MM.yyy")</td>
+                                        <td>@item.CheckIn.ToString("dd.MM.yyy")</td>
+                                        <td>@item.CheckOut.ToString("dd.MM.yyy")</td>                                  
+                                        <td>
+                                            @{
+                                                if (item.ReservationStatusId == 1)
+                                                {
+                                                    <span class="label gradient-1 rounded">@item.ReservationStatus.StatusName</span>
+                                                }
+                                                else if (item.ReservationStatusId == 2)
+                                                {
+                                                    <span class="label gradient-2 rounded">@item.ReservationStatus.StatusName</span>
+                                                }
+                                                else if (item.ReservationStatusId == 3)
+                                                {
+                                                    <span class="label gradient-3 rounded">@item.ReservationStatus.StatusName</span>
+                                                }
+                                                else if (item.ReservationStatusId == 4)
+                                                {
+                                                    <span class="btn-dark label rounded">@item.ReservationStatus.StatusName</span>
+                                                }
+                                                else if (item.ReservationStatusId == 5)
+                                                {
+                                                    <span class="label gradient-7 rounded">@item.ReservationStatus.StatusName</span>
+                                                }
+                                            }
+                                        </td>
+                                    </tr>
+                                }
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

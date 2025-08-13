@@ -1,0 +1,110 @@
+﻿@model List<ContactListDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    int count = 0;
+}
+
+<div class="row page-titles mx-0">
+    <div class="col p-md-0">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/Admin/Dashboard/Index">Anasayfa</a></li>
+            <li class="breadcrumb-item active"><a href="javascript:void(0)">Gelen Mesajlar</a></li>
+        </ol>
+    </div>
+</div>
+<!-- row -->
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="email-left-box">
+                        <a href="/Admin/Contact/AddSendMessage" class="btn btn-primary btn-block">Yeni Mesaj Oluştur</a>
+                        @await Component.InvokeAsync("_MessageSideBarComponentPartial")
+                        @await Component.InvokeAsync("_MessageSideBarCategoryComponentPartial")
+                    </div>
+                    <div class="email-right-box">
+                        <div role="toolbar" class="toolbar">
+                            <div class="btn-group">
+                                <button aria-expanded="false" data-toggle="dropdown" class="btn btn-dark dropdown-toggle" type="button">
+                                    Gelen Mesajlar <span class="caret m-l-5"></span>
+                                </button>
+
+                            </div>
+                        </div>
+                        <br />
+                        <div class="email-list m-t-15">
+                            <div class="message">
+                                <table class="table table-hover table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Kategori</th>
+                                            <th>Gönderici Adı</th>
+                                            <th>Gönderici Soyadı</th>
+                                            <th>Konu</th>
+                                            <th>İçerik</th>
+                                            <th>Tarih</th>
+                                            <th>Durum</th>
+                                            <th>Aksiyon</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in Model)
+                                        {
+                                            count++;
+                                            <tr>
+                                                <td>@count</td>
+                                                <td><i class="@item.MessageCategory.IconUrl"></i> @item.MessageCategory.MessageCategoryName</td>
+                                                <td>@item.Name</td>
+                                                <td>@item.Surname</td>
+                                                <td>@item.Subject</td>
+                                                <td>
+                                                    @{
+                                                        if (item.Text?.Length > 70)
+                                                        {
+                                                            @item.Text.Substring(0, 70)
+                                                            ;
+                                                        }
+                                                        else
+                                                        {
+                                                            @item.Text?.ToString()
+                                                            ;
+                                                        }
+                                                    }...
+                                                </td>
+                                                <td>@item.SendingDate.ToString("dd MMM yyy | HH:ss")</td>
+                                                <td>
+                                                    @{
+                                                        if (item.IsApproved == true)
+                                                        {
+                                                            <span>
+                                                                <i style="font-size:medium" class="text-success fas fa-check-circle"></i>
+                                                                Okundu
+                                                            </span>
+                                                        }
+                                                        else
+                                                        {
+                                                            <span>
+                                                                <i style="font-size:medium" class="text-danger fas fa-times-circle"></i>
+                                                                Okunmadı
+                                                            </span>
+                                                        }
+                                                    }
+                                                </td>
+                                                <td><a href="/Admin/Contact/InboxReadMessage/@item.ContactId"><i class="fab fa-readme"></i> Oku</a></td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,57 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="12.0.0" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.0" />
+    <PackageReference Include="FluentValidation.AspNetCore" Version="11.3.0" />
+    <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.10.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.35" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.35">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.35" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.35">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.18" />
+    <PackageReference Include="NETCore.MailKit" Version="2.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\ApiConsume\HotelApiProject.WebApi\HotelApiProject.WebApi.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Areas\Admin\Data\" />
+    <Folder Include="ValidationRules\RoomValidationRules\" />
+    <Folder Include="wwwroot\images\projectScreenshots\" />
+    <Folder Include="wwwroot\images\staff\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\hotel-html-template\lib\counterup\counterup.min.js" />
+    <None Include="wwwroot\hotel-html-template\lib\easing\easing.js" />
+    <None Include="wwwroot\hotel-html-template\lib\easing\easing.min.js" />
+    <None Include="wwwroot\hotel-html-template\lib\owlcarousel\LICENSE" />
+    <None Include="wwwroot\hotel-html-template\lib\owlcarousel\owl.carousel.js" />
+    <None Include="wwwroot\hotel-html-template\lib\owlcarousel\owl.carousel.min.js" />
+    <None Include="wwwroot\hotel-html-template\lib\tempusdominus\js\moment-timezone.min.js" />
+    <None Include="wwwroot\hotel-html-template\lib\tempusdominus\js\moment.min.js" />
+    <None Include="wwwroot\hotel-html-template\lib\tempusdominus\js\tempusdominus-bootstrap-4.js" />
+    <None Include="wwwroot\hotel-html-template\lib\tempusdominus\js\tempusdominus-bootstrap-4.min.js" />
+    <None Include="wwwroot\hotel-html-template\lib\waypoints\links.php" />
+    <None Include="wwwroot\hotel-html-template\lib\waypoints\waypoints.min.js" />
+    <None Include="wwwroot\hotel-html-template\lib\wow\wow.js" />
+    <None Include="wwwroot\hotel-html-template\lib\wow\wow.min.js" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,76 @@
+﻿@model List<SocialMediaListDto>
+<div class="container-fluid bg-dark text-light footer wow fadeIn" data-wow-delay="0.1s">
+    <div class="container pb-5">
+        <div class="row g-5">
+            <div class="col-md-6 col-lg-4">
+                <div class="bg-primary rounded p-4">
+                    <a href=""><h1 class="text-white text-uppercase mb-3">Hotelier</h1></a>
+                    <p class="text-white mb-0">
+                        Titanic Mardan Palace, Akdeniz'in eşsiz doğasında sizi 5 yıldız ayrıcalığı, ödüllü hizmetleri ve tablo gibi konumuyla karşılıyor.
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <h6 class="section-title text-start text-primary text-uppercase mb-4">İletişim Kur</h6>
+                <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i> Kundu Mah. No: 450, 07112 Aksu/Antalya</p>
+                <p class="mb-2"><i class="fa fa-phone-alt me-3"></i><a href="tel:+903456877889">+90345 687 78 89</a></p>
+                <p class="mb-2"><i class="fa fa-envelope me-3"></i><a href="mailto:hotelapi@batuhanyalinsoftware.com.tr">hotelapi@batuhanyalin.com.tr</a></p>
+                <div class="d-flex pt-2">
+                    @foreach (var item in Model)
+                    {
+                        <a class="btn btn-outline-light btn-social" href="@item.LinkUrl"><i class="@item.LogoUrl"></i></a>
+                    }
+                </div>
+            </div>
+            <div class="col-lg-5 col-md-12">
+                <div class="row gy-5 g-4">
+                    <div class="col-md-6">
+                        <h6 class="section-title text-start text-primary text-uppercase mb-4">Linkler</h6>
+                        <a class="btn btn-link" href="/Default/Index">Hakkımızda</a>
+                        <a class="btn btn-link" href="/Contact/Index">İletişim</a>
+                        <a class="btn btn-link" href="">Politikalar | Şartlar & Koşullar</a>
+                        @{
+                            if (User.Identity.Name==null)
+                            {
+                                <a class="btn btn-link" href="/Login/Index">Giriş Yap</a>
+                            }
+                            else
+                            {
+                                <a class="btn btn-link" href="/Admin/Profile/Index">Profilim</a>
+                                <a class="btn btn-link" href="/Login/LogOut">Çıkış Yap</a>
+                            }
+                        }
+                    </div>
+                    <div class="col-md-6">
+                        <h6 class="section-title text-start text-primary text-uppercase mb-4">Servisler</h6>
+                        <a class="btn btn-link" href="/Default/Service">Yemek & Restaurant</a>
+                        <a class="btn btn-link" href="/Default/Service">Spa & Fitness</a>
+                        <a class="btn btn-link" href="/Default/Service">Sports & Gaming</a>
+                        <a class="btn btn-link" href="/Default/Service">Etkinlikler & Parti</a>
+                        <a class="btn btn-link" href="/Default/Service">GYM & Yoga</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="copyright">
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                    &copy; Tüm Hakları Saklıdır.
+
+                    <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
+                    <a class="border-bottom" href="https://github.com/batuhanyalin">Batuhan YALIN</a> tarafından yapılmıştır.
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <div class="footer-menu">
+                        <a href="https://linkedin.com/in/batuhanyalin"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://github.com/batuhanyalin/hotelapiproject"><i class="fab fa-github"></i></a>
+                        <a href="https://batuhanyalinsoftware.com.tr">https://batuhanyalinsoftware.com.tr</a>
+                        <a href="mailto:iletisim@batuhanyalin.com"><i class="fa fa-envelope me-3"></i>İletişim</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

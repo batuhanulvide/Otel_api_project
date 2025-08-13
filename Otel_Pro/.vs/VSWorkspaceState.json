@@ -1,0 +1,16 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\Frontend",
+    "\\Frontend\\HotelApiProject.WebUI",
+    "\\Frontend\\HotelApiProject.WebUI\\Views",
+    "\\Frontend\\HotelApiProject.WebUI\\Views\\Reservation",
+    "\\Frontend\\HotelApiProject.WebUI\\Views\\Room",
+    "\\Frontend\\HotelApiProject.WebUI\\Views\\Service",
+    "\\Frontend\\HotelApiProject.WebUI\\Views\\Shared",
+    "\\Frontend\\HotelApiProject.WebUI\\Views\\Staff",
+    "\\Frontend\\HotelApiProject.WebUI\\Views\\Testimonial"
+  ],
+  "SelectedNode": "\\Frontend\\HotelApiProject.WebUI\\Views\\Testimonial\\Index.cshtml",
+  "PreviewInSolutionExplorer": false
+}
